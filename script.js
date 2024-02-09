@@ -14,7 +14,7 @@ class Paper {
   currentPaperY = 0;
   rotating = false;
   init(paper) {
-    document.addEventListener('touchmove', (e) => {
+    document.addEventListener('mousemove', (e) => {
       if(!this.rotating) {
         this.mouseX = e.clientX;
         this.mouseY = e.clientY;
@@ -42,7 +42,7 @@ class Paper {
         paper.style.transform = `translateX(${this.currentPaperX}px) translateY(${this.currentPaperY}px) rotateZ(${this.rotation}deg)`;
       }
     })
-    paper.addEventListener('touchdown', (e) => {
+    paper.addEventListener('mousedown', (e) => {
       if(this.holdingPaper) return;
       this.holdingPaper = true;
       paper.style.zIndex = highestZ;
@@ -57,7 +57,7 @@ class Paper {
         this.rotating = true;
       }
     });
-    window.addEventListener('touchup', () => {
+    window.addEventListener('mouseup', () => {
       this.holdingPaper = false;
       this.rotating = false;
     });
